@@ -49,7 +49,6 @@ water-consumption-tracker/
 ├── js/
 │   └── app.js
 ├── assets/
-│   ├── images/
 │   └── screenshots/
 │       ├── homepage.png
 │       ├── dashboard.png
@@ -57,6 +56,7 @@ water-consumption-tracker/
 │       ├── weekly-chart.png
 │       └── water-facts.png
 └── README.md
+```
 ```
 
 ## Screenshots
