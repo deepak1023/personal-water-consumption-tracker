@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AquaTrack | Water Consumption Tracker</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="navbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">💧</span>
+      AquaTrack
+    </a>
+
+    <nav>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#log-water">Log Water</a>
+      <a href="#weekly-history">History</a>
+      <a href="#insights">Insights</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="dashboard">
+      <div>
+        <p class="eyebrow">PERSONAL WATER CONSUMPTION TRACKER</p>
+        <h1>Every drop you track can make a difference.</h1>
+        <p class="hero-text">
+          Record your daily water use, understand your habits, and make
+          smarter choices for a sustainable future.
+        </p>
+        <a class="primary-btn" href="#log-water">Log today’s water use</a>
+      </div>
+
+      <div class="water-drop">💧</div>
+    </section>
+
+    <section class="stats-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">TODAY’S OVERVIEW</p>
+          <h2>Your water usage</h2>
+        </div>
+        <p id="today-date"></p>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card main-stat">
+          <p>Water used today</p>
+          <h3><span id="total-water">0</span> <small>L</small></h3>
+
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+
+          <p class="target-text">
+            Daily target: <strong><span id="target-display">100</span> L</strong>
+          </p>
+        </article>
+
+        <article class="stat-card">
+          <div class="card-icon blue">🎯</div>
+          <p>Water remaining</p>
+          <h3><span id="water-remaining">100</span> <small>L</small></h3>
+          <p class="small-text">Keep your use within the daily target.</p>
+        </article>
+
+        <article class="stat-card">
+          <div class="card-icon green">🌱</div>
+          <p>Water saved</p>
+          <h3><span id="water-saved">0</span> <small>L</small></h3>
+          <p class="small-text">Compared with an average use of 135 L.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="limit-section">
+      <div class="limit-card">
+        <div>
+          <p class="eyebrow">PERSONALISE YOUR GOAL</p>
+          <h2>Set your daily water limit</h2>
+          <p>
+            The default limit is 100 L. You can set a lower or higher limit
+            based on your personal water-saving goal.
+          </p>
+        </div>
+
+        <form id="target-form" class="target-form">
+          <label for="target-input">Daily limit</label>
+
+          <div class="target-control">
+            <input
+              id="target-input"
+              type="number"
+              min="1"
+              max="1000"
+              value="100"
+              required
+            />
+            <span>L/day</span>
+          </div>
+
+          <button class="primary-btn" type="submit">Save limit</button>
+          <p id="target-status" class="target-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="content-grid" id="log-water">
+      <article class="form-card">
+        <p class="eyebrow">ADD AN ENTRY</p>
+        <h2>Log water usage</h2>
+
+        <form id="water-form">
+          <label for="activity">Activity</label>
+          <select id="activity" required>
+            <option value="">Choose an activity</option>
+            <option value="Bathing">🚿 Bathing / Shower</option>
+            <option value="Drinking">🥤 Drinking</option>
+            <option value="Laundry">🧺 Laundry</option>
+            <option value="Dishwashing">🍽️ Dishwashing</option>
+            <option value="Cleaning">🧽 Cleaning</option>
+            <option value="Gardening">🌿 Gardening</option>
+            <option value="Other">💧 Other</option>
+          </select>
+
+          <label for="litres">Water used (in litres)</label>
+          <input
+            id="litres"
+            type="number"
+            min="1"
+            placeholder="Example: 5"
+            required
+          />
+
+          <button class="primary-btn" type="submit">Add water usage</button>
+        </form>
+      </article>
+
+      <article class="breakdown-card">
+        <p class="eyebrow">USAGE BREAKDOWN</p>
+        <h2>Where is your water going?</h2>
+
+        <div class="empty-breakdown" id="empty-breakdown">
+          <span>💦</span>
+          <p>Add an entry to see your daily usage breakdown.</p>
+        </div>
+
+        <div class="breakdown-list" id="breakdown-list"></div>
+      </article>
+    </section>
+
+    <section class="weekly-section" id="weekly-history">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">WEEKLY PROGRESS</p>
+          <h2>Your last 7 days</h2>
+        </div>
+        <p>Daily total in litres</p>
+      </div>
+
+      <article class="weekly-card">
+        <div class="weekly-chart" id="weekly-chart" aria-label="Water usage chart for the last seven days"></div>
+        <p class="chart-note">
+          The dotted line represents your selected daily limit.
+        </p>
+      </article>
+    </section>
+
+    <section class="insights-section" id="insights">
+      <div class="tip-card">
+        <div class="tip-icon">💡</div>
+        <div>
+          <p class="eyebrow">SMART WATER TIP</p>
+          <h2 id="tip-title">Start tracking today</h2>
+          <p id="tip-message">
+            Add your first activity to receive personalised water-saving advice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">WATER AWARENESS</p>
+          <h2>Small facts, meaningful action</h2>
+        </div>
+      </div>
+
+      <div class="facts-grid">
+        <article class="fact-card">
+          <span>💧</span>
+          <h3>Fresh water is limited</h3>
+          <p>
+            Only a small portion of Earth’s water is readily available as fresh water for people and ecosystems.
+          </p>
+        </article>
+
+        <article class="fact-card">
+          <span>🚿</span>
+          <h3>Every habit matters</h3>
+          <p>
+            Turning off the tap while brushing or soaping can prevent unnecessary water waste.
+          </p>
+        </article>
+
+        <article class="fact-card">
+          <span>🌱</span>
+          <h3>Conservation protects life</h3>
+          <p>
+            Saving water supports homes, agriculture, rivers, wildlife, and future generations.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">TODAY’S RECORDS</p>
+          <h2>Recent water entries</h2>
+        </div>
+        <button class="text-btn" id="clear-data" type="button">Clear all</button>
+      </div>
+
+      <div class="history-list" id="history-list">
+        <p class="empty-history">No water-usage entries yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 AquaTrack · CHE110 Environmental Studies Project</p>
+    <p>Conserve water. Protect life. 💧</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
